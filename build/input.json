@@ -1,0 +1,31 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/HelloWorld.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\npragma solidity ^0.8.20;\r\n\r\ncontract HelloWorld {\r\n    string public greet = \"Hello World!\";\r\n}"
+    },
+    "contracts/YieldVault.sol": {
+      "content": "// SPDX-License-Identifier: MIT\r\npragma solidity 0.8.24\r\n\r\nimport {ERC4626} from \"@openzeppelin/contracts/token/ERC20/extensions/ERC4626.sol\";\r\nimport {ERC20} from \"@openzeppelin/contracts/token/ERC20/ERC20.sol\";\r\nimport {IERC20} from \"@openzeppelin/contracts/token/ERC20/IERC20.sol\";\r\nimport {Math} from \"@openzeppelin/contracts/utils/math/Math.sol\";\r\nimport {Ownable} from \"@openzeppelin/contracts/access/Ownable.sol\";\r\n\r\n// ERC-4626 tokenized yield vault with performance fees and a deposit cap. Not audited.\r\ncontract YieldVault is ERC4626, Ownable {\r\n    using Math for uint256;\r\n\r\n    uint16 public constant BPS = 10_000;\r\n    uint16 public constant MAX_PERFORMANCE_FEE_BPS = 2_000; // 20% hard cap\r\n\r\n    uint16 public performanceFeeBps; // fee on reported yield, in bps\r\n    address public feeRecipient;     // receives fee shares\r\n    uint256 public depositCap;       // 0 means unlimited\r\n\r\n    event Harvested(uint256 yieldAssets, uint256 feeShares);\r\n    event PerformanceFeeUpdated(uint16 oldBps, uint16 newBps);\r\n    event FeeRecipientUpdated(address indexed oldRecipient, address indexed newRecipient);\r\n    event DepositCapUpdated(uint256 oldCap, uint256 newCap);\r\n\r\n    error FeeTooHigh(uint16 bps);\r\n    error ZeroAddress();\r\n\r\n    constructor(\r\n        IERC20 asset_,\r\n        string memory name_,\r\n        string memory symbol_,\r\n        address initialOwner_,\r\n        address feeRecipient_,\r\n        uint16 performanceFeeBps_,\r\n        uint256 depositCap_\r\n    ) ERC4626(asset_) ERC20(name_, symbol_) Ownable(initialOwner_) {\r\n        if (feeRecipient_ == address(0)) revert ZeroAddress();\r\n        if (performanceFeeBps_ > MAX_PERFORMANCE_FEE_BPS) revert FeeTooHigh(performanceFeeBps_);\r\n\r\n        feeRecipient = feeRecipient_;\r\n        performanceFeeBps = performanceFeeBps_;\r\n        depositCap = depositCap_;\r\n    }\r\n\r\n    // Returns remaining capacity, or max uint if uncapped.\r\n    function maxDeposit(address) public view override returns (uint256) {\r\n        uint256 cap = depositCap;\r\n        if (cap == 0) return type(uint256).max;\r\n\r\n        uint256 assets = totalAssets();\r\n        return assets >= cap ? 0 : cap - assets;\r\n    }\r\n\r\n    // Derives max mintable shares from the deposit cap.\r\n    function maxMint(address receiver) public view override returns (uint256) {\r\n        uint256 assets = maxDeposit(receiver);\r\n        return assets == type(uint256).max ? type(uint256).max : previewDeposit(assets);\r\n    }\r\n\r\n    // Reports yield already transferred into the vault and mints fee shares.\r\n    function harvest(uint256 yieldAssets) external onlyOwner {\r\n        if (yieldAssets == 0) return;\r\n\r\n        uint256 feeShares;\r\n        uint256 feeAssets = (yieldAssets * performanceFeeBps) / BPS;\r\n\r\n        if (feeAssets > 0) {\r\n            // Mint at post-fee price so the fee dilutes depositors by exactly feeAssets.\r\n            feeShares = feeAssets.mulDiv(totalSupply(), totalAssets() - feeAssets);\r\n            _mint(feeRecipient, feeShares);\r\n        }\r\n\r\n        emit Harvested(yieldAssets, feeShares);\r\n    }\r\n\r\n    // Updates the performance fee, capped at MAX_PERFORMANCE_FEE_BPS.\r\n    function setPerformanceFee(uint16 newBps) external onlyOwner {\r\n        if (newBps > MAX_PERFORMANCE_FEE_BPS) revert FeeTooHigh(newBps);\r\n        emit PerformanceFeeUpdated(performanceFeeBps, newBps);\r\n        performanceFeeBps = newBps;\r\n    }\r\n\r\n    // Updates the fee recipient.\r\n    function setFeeRecipient(address newRecipient) external onlyOwner {\r\n        if (newRecipient == address(0)) revert ZeroAddress();\r\n        emit FeeRecipientUpdated(feeRecipient, newRecipient);\r\n        feeRecipient = newRecipient;\r\n    }\r\n\r\n    // Updates the deposit cap; 0 disables the cap.\r\n    function setDepositCap(uint256 newCap) external onlyOwner {\r\n        emit DepositCapUpdated(depositCap, newCap);\r\n        depositCap = newCap;\r\n    }\r\n\r\n    // Virtual shares offset that mitigates the first-depositor inflation attack.\r\n    function _decimalsOffset() internal view override returns (uint8) {\r\n        return 3;\r\n    }\r\n}"
+    }
+  },
+  "settings": {
+    "remappings": [
+      "@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/"
+    ],
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "evmVersion": "paris",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object",
+          "evm.deployedBytecode.object",
+          "metadata"
+        ]
+      }
+    }
+  }
+}
