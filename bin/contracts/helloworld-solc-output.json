@@ -1,0 +1,180 @@
+{
+    "contracts": {
+        "c:/Users/akank/OneDrive/Desktop/SEPM/sepm_project_submission/contracts/helloworld.sol": {
+            "helloworld": {
+                "abi": [
+                    {
+                        "inputs": [],
+                        "name": "greet",
+                        "outputs": [
+                            {
+                                "internalType": "string",
+                                "name": "",
+                                "type": "string"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    }
+                ],
+                "devdoc": {
+                    "kind": "dev",
+                    "methods": {},
+                    "version": 1
+                },
+                "evm": {
+                    "bytecode": {
+                        "functionDebugData": {},
+                        "generatedSources": [],
+                        "linkReferences": {},
+                        "object": "6080806040523460a6575f54600181811c91168015609d575b6020821014608957601f81116058575b507f68656c6c6f776f726c64000000000000000000000000000000000000000000145f5561018f90816100ab8239f35b600a8111156028575f8052601f60205f20910160051c905f5b828110607d5750506028565b5f828201556001016071565b634e487b7160e01b5f52602260045260245ffd5b90607f16906018565b5f80fdfe6080600436101561000e575f80fd5b5f3560e01c63cfae321714610021575f80fd5b34610155575f366003190112610155575f5f54908160011c6001831692831561014b575b60208210841461013757818552602085019390811561011e57506001146100ca575b50829003601f01601f191682019167ffffffffffffffff8311818410176100b6576040918391828452602083525180918160208501528484015e5f828201840152601f01601f19168101030190f35b634e487b7160e01b5f52604160045260245ffd5b90505f80527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5635f905b8282106101085750602091508301015f610067565b60018160209254838589010152019101906100f3565b60ff1916845250151560051b830160200190505f610067565b634e487b7160e01b5f52602260045260245ffd5b90607f1690610045565b5f80fdfea2646970667358221220db90cb1f1c69dcf2da7cf51202bc4221a9d296ac06e589b14681efc126459c3e64736f6c63430008250033",
+                        "opcodes": "PUSH1 0x80 DUP1 PUSH1 0x40 MSTORE CALLVALUE PUSH1 0xA6 JUMPI PUSH0 SLOAD PUSH1 0x1 DUP2 DUP2 SHR SWAP2 AND DUP1 ISZERO PUSH1 0x9D JUMPI JUMPDEST PUSH1 0x20 DUP3 LT EQ PUSH1 0x89 JUMPI PUSH1 0x1F DUP2 GT PUSH1 0x58 JUMPI JUMPDEST POP PUSH32 0x68656C6C6F776F726C6400000000000000000000000000000000000000000014 PUSH0 SSTORE PUSH2 0x18F SWAP1 DUP2 PUSH2 0xAB DUP3 CODECOPY RETURN JUMPDEST PUSH1 0xA DUP2 GT ISZERO PUSH1 0x28 JUMPI PUSH0 DUP1 MSTORE PUSH1 0x1F PUSH1 0x20 PUSH0 KECCAK256 SWAP2 ADD PUSH1 0x5 SHR SWAP1 PUSH0 JUMPDEST DUP3 DUP2 LT PUSH1 0x7D JUMPI POP POP PUSH1 0x28 JUMP JUMPDEST PUSH0 DUP3 DUP3 ADD SSTORE PUSH1 0x1 ADD PUSH1 0x71 JUMP JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH1 0x22 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST SWAP1 PUSH1 0x7F AND SWAP1 PUSH1 0x18 JUMP JUMPDEST PUSH0 DUP1 REVERT INVALID PUSH1 0x80 PUSH1 0x4 CALLDATASIZE LT ISZERO PUSH2 0xE JUMPI PUSH0 DUP1 REVERT JUMPDEST PUSH0 CALLDATALOAD PUSH1 0xE0 SHR PUSH4 0xCFAE3217 EQ PUSH2 0x21 JUMPI PUSH0 DUP1 REVERT JUMPDEST CALLVALUE PUSH2 0x155 JUMPI PUSH0 CALLDATASIZE PUSH1 0x3 NOT ADD SLT PUSH2 0x155 JUMPI PUSH0 PUSH0 SLOAD SWAP1 DUP2 PUSH1 0x1 SHR PUSH1 0x1 DUP4 AND SWAP3 DUP4 ISZERO PUSH2 0x14B JUMPI JUMPDEST PUSH1 0x20 DUP3 LT DUP5 EQ PUSH2 0x137 JUMPI DUP2 DUP6 MSTORE PUSH1 0x20 DUP6 ADD SWAP4 SWAP1 DUP2 ISZERO PUSH2 0x11E JUMPI POP PUSH1 0x1 EQ PUSH2 0xCA JUMPI JUMPDEST POP DUP3 SWAP1 SUB PUSH1 0x1F ADD PUSH1 0x1F NOT AND DUP3 ADD SWAP2 PUSH8 0xFFFFFFFFFFFFFFFF DUP4 GT DUP2 DUP5 LT OR PUSH2 0xB6 JUMPI PUSH1 0x40 SWAP2 DUP4 SWAP2 DUP3 DUP5 MSTORE PUSH1 0x20 DUP4 MSTORE MLOAD DUP1 SWAP2 DUP2 PUSH1 0x20 DUP6 ADD MSTORE DUP5 DUP5 ADD MCOPY PUSH0 DUP3 DUP3 ADD DUP5 ADD MSTORE PUSH1 0x1F ADD PUSH1 0x1F NOT AND DUP2 ADD SUB ADD SWAP1 RETURN JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH1 0x41 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST SWAP1 POP PUSH0 DUP1 MSTORE PUSH32 0x290DECD9548B62A8D60345A988386FC84BA6BC95484008F6362F93160EF3E563 PUSH0 SWAP1 JUMPDEST DUP3 DUP3 LT PUSH2 0x108 JUMPI POP PUSH1 0x20 SWAP2 POP DUP4 ADD ADD PUSH0 PUSH2 0x67 JUMP JUMPDEST PUSH1 0x1 DUP2 PUSH1 0x20 SWAP3 SLOAD DUP4 DUP6 DUP10 ADD ADD MSTORE ADD SWAP2 ADD SWAP1 PUSH2 0xF3 JUMP JUMPDEST PUSH1 0xFF NOT AND DUP5 MSTORE POP ISZERO ISZERO PUSH1 0x5 SHL DUP4 ADD PUSH1 0x20 ADD SWAP1 POP PUSH0 PUSH2 0x67 JUMP JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH1 0x22 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST SWAP1 PUSH1 0x7F AND SWAP1 PUSH2 0x45 JUMP JUMPDEST PUSH0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xDB SWAP1 0xCB 0x1F SHR PUSH10 0xDCF2DA7CF51202BC4221 0xA9 0xD2 SWAP7 0xAC MOD 0xE5 DUP10 0xB1 CHAINID DUP2 0xEF 0xC1 0x26 GASLIMIT SWAP13 RETURNDATACOPY PUSH5 0x736F6C6343 STOP ADDMOD 0x25 STOP CALLER ",
+                        "sourceMap": "60:64:0:-:0;;;;;;;108:12;60:64;;;;;;;;;;;-1:-1:-1;60:64:0;;;;;;;;;;;-1:-1:-1;;60:64:0;108:12;60:64;;;;;;;;;;;;;;;108:12;60:64;;;;108:12;60:64;;;;;;108:12;60:64;;;;;;;;;;;108:12;60:64;;;;;;;;;;;;108:12;60:64;;;;;108:12;60:64;;;;;;;;;;;"
+                    },
+                    "deployedBytecode": {
+                        "functionDebugData": {},
+                        "generatedSources": [],
+                        "immutableReferences": {},
+                        "linkReferences": {},
+                        "object": "6080600436101561000e575f80fd5b5f3560e01c63cfae321714610021575f80fd5b34610155575f366003190112610155575f5f54908160011c6001831692831561014b575b60208210841461013757818552602085019390811561011e57506001146100ca575b50829003601f01601f191682019167ffffffffffffffff8311818410176100b6576040918391828452602083525180918160208501528484015e5f828201840152601f01601f19168101030190f35b634e487b7160e01b5f52604160045260245ffd5b90505f80527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5635f905b8282106101085750602091508301015f610067565b60018160209254838589010152019101906100f3565b60ff1916845250151560051b830160200190505f610067565b634e487b7160e01b5f52602260045260245ffd5b90607f1690610045565b5f80fdfea2646970667358221220db90cb1f1c69dcf2da7cf51202bc4221a9d296ac06e589b14681efc126459c3e64736f6c63430008250033",
+                        "opcodes": "PUSH1 0x80 PUSH1 0x4 CALLDATASIZE LT ISZERO PUSH2 0xE JUMPI PUSH0 DUP1 REVERT JUMPDEST PUSH0 CALLDATALOAD PUSH1 0xE0 SHR PUSH4 0xCFAE3217 EQ PUSH2 0x21 JUMPI PUSH0 DUP1 REVERT JUMPDEST CALLVALUE PUSH2 0x155 JUMPI PUSH0 CALLDATASIZE PUSH1 0x3 NOT ADD SLT PUSH2 0x155 JUMPI PUSH0 PUSH0 SLOAD SWAP1 DUP2 PUSH1 0x1 SHR PUSH1 0x1 DUP4 AND SWAP3 DUP4 ISZERO PUSH2 0x14B JUMPI JUMPDEST PUSH1 0x20 DUP3 LT DUP5 EQ PUSH2 0x137 JUMPI DUP2 DUP6 MSTORE PUSH1 0x20 DUP6 ADD SWAP4 SWAP1 DUP2 ISZERO PUSH2 0x11E JUMPI POP PUSH1 0x1 EQ PUSH2 0xCA JUMPI JUMPDEST POP DUP3 SWAP1 SUB PUSH1 0x1F ADD PUSH1 0x1F NOT AND DUP3 ADD SWAP2 PUSH8 0xFFFFFFFFFFFFFFFF DUP4 GT DUP2 DUP5 LT OR PUSH2 0xB6 JUMPI PUSH1 0x40 SWAP2 DUP4 SWAP2 DUP3 DUP5 MSTORE PUSH1 0x20 DUP4 MSTORE MLOAD DUP1 SWAP2 DUP2 PUSH1 0x20 DUP6 ADD MSTORE DUP5 DUP5 ADD MCOPY PUSH0 DUP3 DUP3 ADD DUP5 ADD MSTORE PUSH1 0x1F ADD PUSH1 0x1F NOT AND DUP2 ADD SUB ADD SWAP1 RETURN JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH1 0x41 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST SWAP1 POP PUSH0 DUP1 MSTORE PUSH32 0x290DECD9548B62A8D60345A988386FC84BA6BC95484008F6362F93160EF3E563 PUSH0 SWAP1 JUMPDEST DUP3 DUP3 LT PUSH2 0x108 JUMPI POP PUSH1 0x20 SWAP2 POP DUP4 ADD ADD PUSH0 PUSH2 0x67 JUMP JUMPDEST PUSH1 0x1 DUP2 PUSH1 0x20 SWAP3 SLOAD DUP4 DUP6 DUP10 ADD ADD MSTORE ADD SWAP2 ADD SWAP1 PUSH2 0xF3 JUMP JUMPDEST PUSH1 0xFF NOT AND DUP5 MSTORE POP ISZERO ISZERO PUSH1 0x5 SHL DUP4 ADD PUSH1 0x20 ADD SWAP1 POP PUSH0 PUSH2 0x67 JUMP JUMPDEST PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH0 MSTORE PUSH1 0x22 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH0 REVERT JUMPDEST SWAP1 PUSH1 0x7F AND SWAP1 PUSH2 0x45 JUMP JUMPDEST PUSH0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xDB SWAP1 0xCB 0x1F SHR PUSH10 0xDCF2DA7CF51202BC4221 0xA9 0xD2 SWAP7 0xAC MOD 0xE5 DUP10 0xB1 CHAINID DUP2 0xEF 0xC1 0x26 GASLIMIT SWAP13 RETURNDATACOPY PUSH5 0x736F6C6343 STOP ADDMOD 0x25 STOP CALLER ",
+                        "sourceMap": "60:64:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;60:64:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;60:64:0;;;;;-1:-1:-1;;60:64:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;60:64:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;60:64:0;;;-1:-1:-1;60:64:0;;;;;;;;;-1:-1:-1;60:64:0;;;;;;;;;;;;;;;;;;;;;;;;;"
+                    },
+                    "gasEstimates": {
+                        "creation": {
+                            "codeDepositCost": "79800",
+                            "executionCost": "infinite",
+                            "totalCost": "infinite"
+                        },
+                        "external": {
+                            "greet()": "infinite"
+                        }
+                    },
+                    "methodIdentifiers": {
+                        "greet()": "cfae3217"
+                    }
+                },
+                "metadata": "{\"compiler\":{\"version\":\"0.8.37+commit.f401782d\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"greet\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"c:/Users/akank/OneDrive/Desktop/SEPM/sepm_project_submission/contracts/helloworld.sol\":\"helloworld\"},\"evmVersion\":\"osaka\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[],\"viaIR\":true},\"sources\":{\"c:/Users/akank/OneDrive/Desktop/SEPM/sepm_project_submission/contracts/helloworld.sol\":{\"keccak256\":\"0xc0706a6328d9b383254ef810a71d96f6c7535e2413b7420495543f012d4fdc81\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2cc174e0d292feec8578159c270a2c0e4d39f3244996f4eb6b4388f61ef7c35f\",\"dweb:/ipfs/QmSqTsqS6SnL5s4UhcYzrPAyc7x9T4ZL62Pas63we4tH1U\"]}},\"version\":1}",
+                "storageLayout": {
+                    "storage": [
+                        {
+                            "astId": 4,
+                            "contract": "c:/Users/akank/OneDrive/Desktop/SEPM/sepm_project_submission/contracts/helloworld.sol:helloworld",
+                            "label": "greet",
+                            "offset": 0,
+                            "slot": "0",
+                            "type": "t_string_storage"
+                        }
+                    ],
+                    "types": {
+                        "t_string_storage": {
+                            "encoding": "bytes",
+                            "label": "string",
+                            "numberOfBytes": "32"
+                        }
+                    }
+                },
+                "userdoc": {
+                    "kind": "user",
+                    "methods": {},
+                    "version": 1
+                }
+            }
+        }
+    },
+    "sources": {
+        "c:/Users/akank/OneDrive/Desktop/SEPM/sepm_project_submission/contracts/helloworld.sol": {
+            "ast": {
+                "absolutePath": "c:/Users/akank/OneDrive/Desktop/SEPM/sepm_project_submission/contracts/helloworld.sol",
+                "exportedSymbols": {
+                    "helloworld": [
+                        5
+                    ]
+                },
+                "id": 6,
+                "license": "MIT",
+                "nodeType": "SourceUnit",
+                "nodes": [
+                    {
+                        "id": 1,
+                        "literals": [
+                            "solidity",
+                            "^",
+                            "0.8",
+                            ".0"
+                        ],
+                        "nodeType": "PragmaDirective",
+                        "src": "33:23:0"
+                    },
+                    {
+                        "abstract": false,
+                        "baseContracts": [],
+                        "canonicalName": "helloworld",
+                        "contractDependencies": [],
+                        "contractKind": "contract",
+                        "fullyImplemented": true,
+                        "id": 5,
+                        "linearizedBaseContracts": [
+                            5
+                        ],
+                        "name": "helloworld",
+                        "nameLocation": "69:10:0",
+                        "nodeType": "ContractDefinition",
+                        "nodes": [
+                            {
+                                "constant": false,
+                                "functionSelector": "cfae3217",
+                                "id": 4,
+                                "mutability": "mutable",
+                                "name": "greet",
+                                "nameLocation": "100:5:0",
+                                "nodeType": "VariableDeclaration",
+                                "scope": 5,
+                                "src": "86:34:0",
+                                "stateVariable": true,
+                                "storageLocation": "default",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_string_storage",
+                                    "typeString": "string"
+                                },
+                                "typeName": {
+                                    "id": 2,
+                                    "name": "string",
+                                    "nodeType": "ElementaryTypeName",
+                                    "src": "86:6:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_string_storage_ptr",
+                                        "typeString": "string"
+                                    }
+                                },
+                                "value": {
+                                    "hexValue": "68656c6c6f776f726c64",
+                                    "id": 3,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "kind": "string",
+                                    "lValueRequested": false,
+                                    "nodeType": "Literal",
+                                    "src": "108:12:0",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_stringliteral_fa26db7ca85ead399216e7c6316bc50ed24393c3122b582735e7f3b0f91b93f0",
+                                        "typeString": "literal_string \"helloworld\""
+                                    },
+                                    "value": "helloworld"
+                                },
+                                "visibility": "public"
+                            }
+                        ],
+                        "scope": 6,
+                        "src": "60:64:0",
+                        "usedErrors": [],
+                        "usedEvents": []
+                    }
+                ],
+                "src": "33:91:0"
+            },
+            "id": 0
+        }
+    }
+}
