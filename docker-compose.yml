@@ -1,0 +1,16 @@
+services:
+  solc:
+    image: ethereum/solc:0.8.24
+    working_dir: /app
+    volumes:
+      - ./:/app
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        solc --standard-json < build/input.json > build/output.json
+        if grep -q '"severity"[[:space:]]*:[[:space:]]*"error"' build/output.json; then
+          echo "Compilation failed:"
+          grep -A 8 -B 2 '"severity"[[:space:]]*:[[:space:]]*"error"' build/output.json
+          exit 1
+        fi
+        echo "Compilation OK"

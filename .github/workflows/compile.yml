@@ -1,0 +1,63 @@
+name: Compile Contracts
+
+on:
+  push:
+    branches: [main]
+  pull_request: 
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compile:
+    name: Build with solc 0.8.24
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate solc standard-JSON input
+        run: node scripts/build-input.js
+
+      - name: Compile contracts in Docker
+        run: |
+          docker run --rm -i \
+            -v "$PWD":/app \
+            -w /app \
+            ethereum/solc:0.8.24 \
+            --standard-json --base-path /app --include-path /app/node_modules \
+            < build/input.json > build/output.json
+
+      # solc's --standard-json exits 0 even on compile errors, so we must
+      # inspect the output ourselves.
+      - name: Fail on compiler errors
+        run: |
+          jq -e '[.errors[]? | select(.severity == "error")] | length == 0' build/output.json \
+            || { echo "::error::Solidity compilation failed"; jq '.errors' build/output.json; exit 1; }
+
+      - name: Print bytecode sizes
+        run: |
+          jq -r '
+            .contracts | to_entries[] | .value | to_entries[]
+            | "\(.key): \((.value.evm.deployedBytecode.object | length) / 2) bytes"
+          ' build/output.json
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-contracts
+          path: build/output.json
+          retention-days: 30
