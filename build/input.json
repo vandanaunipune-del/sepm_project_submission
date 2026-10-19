@@ -1,0 +1,22 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/HelloWorld.sol": {
+      "content": ""
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object"
+        ]
+      }
+    }
+  }
+}
