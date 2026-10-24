@@ -1,0 +1,24 @@
+{
+  "name": "feature_3022411009_vault_app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prepare-input": "node scripts/build-input.js",
+    "compile": "npm run prepare-input && docker compose run --rm solc"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "5.1.0"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vandanaunipune-del/sepm_project_submission.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vandanaunipune-del/sepm_project_submission/issues"
+  },
+  "homepage": "https://github.com/vandanaunipune-del/sepm_project_submission#readme",
+  "description": ""
+}
