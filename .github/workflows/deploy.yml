@@ -1,0 +1,50 @@
+name: Compile and Deploy to Sepolia
+
+on:
+  workflow_dispatch: # Allows manual trigger from the Actions tab
+
+jobs:
+  deploy:
+    name: Compile and Deploy
+    runs-on: ubuntu-latest
+    environment: Testnet
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # Required for Hardhat 3 compatibility
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # 1. Generate solc input
+      - name: Generate solc standard-JSON input
+        run: node scripts/build-input.cjs
+
+      # 2. Compile contracts exactly like your local environment
+      - name: Compile contracts in Docker
+        run: |
+          docker run --rm -i \
+            -v "$PWD":/app \
+            -w /app \
+            ethereum/solc:0.8.24 \
+            --standard-json --base-path /app --include-path /app/node_modules \
+            < build/input.json > build/output.json
+
+      # 3. Check for compilation errors
+      - name: Fail on compiler errors
+        run: |
+          jq -e '[.errors[]? | select(.severity == "error")] | length == 0' build/output.json \
+            || { echo "::error::Solidity compilation failed"; jq '.errors' build/output.json; exit 1; }
+
+      # 4. Deploy using standard Node.js (bypasses Hardhat)
+      - name: Deploy to Sepolia
+        run: node scripts/deploy.js
+        env:
+          SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
+          SEPOLIA_PRIVATE_KEY: ${{ secrets.SEPOLIA_PRIVATE_KEY }}
