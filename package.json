@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prepare-input": "node scripts/build-input.js",
-    "compile": "npm run prepare-input && docker compose run --rm solc"
+    "prepare-input": "node scripts/build-input.cjs",
+    "compile": "npm run prepare-input && docker compose run --rm solc",
+    "deploy": "node scripts/deploy.js"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "5.1.0"
+    "@openzeppelin/contracts": "5.1.0",
+    "dotenv": "^18.0.9"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-ethers": "^4.2.1",

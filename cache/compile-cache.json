@@ -1,0 +1,30 @@
+{
+  "C:\\sepm_project_submission\\contracts\\HelloWorld.sol": {
+    "jobHash": "solc-0_8_24-093da94675fc6a635cc113c584dce4be3f147a55",
+    "isolated": false,
+    "compilerType": "solc",
+    "artifactPaths": [
+      "C:\\sepm_project_submission\\artifacts\\contracts\\HelloWorld.sol\\HelloWorld.json"
+    ],
+    "buildInfoPath": "C:\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-23a8be9f25b2be1ee08fac16ffd334f4c268b9e9.json",
+    "buildInfoOutputPath": "C:\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-23a8be9f25b2be1ee08fac16ffd334f4c268b9e9.output.json",
+    "typeFilePath": "C:\\sepm_project_submission\\artifacts\\contracts\\HelloWorld.sol\\artifacts.d.ts",
+    "wasm": false,
+    "artifactsDirectory": "C:\\sepm_project_submission\\artifacts",
+    "emitsTypeDeclarations": true
+  },
+  "C:\\sepm_project_submission\\contracts\\YieldVault.sol": {
+    "jobHash": "solc-0_8_24-2911890cf62a8981fab721f7221f2eebb61fdb99",
+    "isolated": false,
+    "compilerType": "solc",
+    "artifactPaths": [
+      "C:\\sepm_project_submission\\artifacts\\contracts\\YieldVault.sol\\YieldVault.json"
+    ],
+    "buildInfoPath": "C:\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-23a8be9f25b2be1ee08fac16ffd334f4c268b9e9.json",
+    "buildInfoOutputPath": "C:\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-23a8be9f25b2be1ee08fac16ffd334f4c268b9e9.output.json",
+    "typeFilePath": "C:\\sepm_project_submission\\artifacts\\contracts\\YieldVault.sol\\artifacts.d.ts",
+    "wasm": false,
+    "artifactsDirectory": "C:\\sepm_project_submission\\artifacts",
+    "emitsTypeDeclarations": true
+  }
+}
