@@ -1,4 +1,4 @@
-name: Sepolia Testnet: Compile and Deploy
+name: Sepolia Testnet - Compile and Deploy
 
 on:
   workflow_dispatch: 
