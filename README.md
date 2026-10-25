@@ -132,7 +132,7 @@ The secret names must match the ones used in [deploy.yml](.github/workflows/depl
 
 ### Workflows
 
-- **Compile Contracts** ([compile.yml](.github/workflows/compile.yml)) – runs on push and pull request to `main` and on manual dispatch. It builds the solc input, compiles in the `ethereum/solc:0.8.24` container, fails on any compiler error, prints bytecode sizes and uploads `build/output.json` as an artifact.
+- **Compile Contracts** ([compile.yml](.github/workflows/compile.yml)) – runs on push and pull request to `main` when files under `contracts/` change, and on manual dispatch. It builds the solc input, compiles in the `ethereum/solc:0.8.24` container, fails on any compiler error, prints bytecode sizes and uploads `build/output.json` as an artifact.
 - **Compile and Deploy to Sepolia** ([deploy.yml](.github/workflows/deploy.yml)) – manual trigger (**Actions → Compile and Deploy to Sepolia → Run workflow**). It compiles the same way, then runs `node scripts/deploy.js` with the secrets above.
 
 ### Pushing to both repositories
