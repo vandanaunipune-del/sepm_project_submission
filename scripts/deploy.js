@@ -2,6 +2,7 @@ import fs from 'fs';
 import { ethers } from 'ethers';
 import dotenv from 'dotenv';
 
+// Load .env locally (GitHub Actions will inject these variables automatically)
 dotenv.config();
 
 async function main() {
@@ -27,12 +28,28 @@ async function main() {
 
   // 3. Connect to Sepolia
   const provider = new ethers.JsonRpcProvider(process.env.SEPOLIA_RPC_URL);
-  const wallet = new ethers.Wallet(process.env.SEPOLIA_PRIVATE_KEY, provider);
+  
+  // 4. Bulletproof Private Key Sanitization
+  let rawKey = (process.env.SEPOLIA_PRIVATE_KEY || "")
+    .trim()
+    .replace(/^["']|["']$/g, '') // Remove quotes
+    .replace(/\s+/g, '');        // Remove ALL spaces and newlines
 
+  // Ensure it has the 0x prefix (Ethers.js v6 requires this)
+  if (!rawKey.startsWith("0x")) {
+    rawKey = "0x" + rawKey;
+  }
+
+  if (rawKey.length !== 66) {
+    throw new Error(`Invalid private key length: ${rawKey.length}. Expected 66 characters (0x + 64 hex chars).`);
+  }
+
+  const wallet = new ethers.Wallet(rawKey, provider);
   console.log("Deploying contracts with the account:", wallet.address);
 
-  // 4. Define constructor arguments
-  const assetAddress = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238"; // Sepolia USDC test token
+  // 5. Define constructor arguments
+  // Sepolia USDC test address used as an example. Replace if using your own token.
+  const assetAddress = "0x1c7D4B196Cb0C7B01d743Fbc6116a902379C7238"; 
   const name = "Yield Vault Share";
   const symbol = "yvSHARE";
   const initialOwner = wallet.address;
@@ -40,7 +57,7 @@ async function main() {
   const performanceFeeBps = 1000; // 10%
   const depositCap = ethers.parseUnits("1000000", 18);
 
-  // 5. Deploy
+  // 6. Deploy
   console.log("Deploying YieldVault...");
   const factory = new ethers.ContractFactory(abi, bytecode, wallet);
   
