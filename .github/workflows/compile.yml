@@ -30,7 +30,7 @@ jobs:
         run: npm ci
 
       - name: Generate solc standard-JSON input
-        run: node scripts/build-input.js
+        run: node scripts/build-input.cjs
 
       - name: Compile contracts in Docker
         run: |
