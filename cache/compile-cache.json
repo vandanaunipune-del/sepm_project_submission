@@ -1,0 +1,28 @@
+{
+  "C:\\Users\\Dell\\Downloads\\van1\\sepm_project_submission\\contracts\\HelloWorld.sol": {
+    "jobHash": "solc-0_8_24-7928f6e33eef6bfda7c1b8ad03084ea145fc0a06",
+    "isolated": false,
+    "compilerType": "solc",
+    "artifactPaths": [
+      "C:\\Users\\Dell\\Downloads\\van1\\sepm_project_submission\\artifacts\\contracts\\HelloWorld.sol\\Helloworld.json"
+    ],
+    "buildInfoPath": "C:\\Users\\Dell\\Downloads\\van1\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-1c791cf880713591692d5af4cdc434e0a333b1f1.json",
+    "buildInfoOutputPath": "C:\\Users\\Dell\\Downloads\\van1\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-1c791cf880713591692d5af4cdc434e0a333b1f1.output.json",
+    "typeFilePath": "C:\\Users\\Dell\\Downloads\\van1\\sepm_project_submission\\artifacts\\contracts\\HelloWorld.sol\\artifacts.d.ts",
+    "wasm": false,
+    "artifactsDirectory": "C:\\Users\\Dell\\Downloads\\van1\\sepm_project_submission\\artifacts",
+    "emitsTypeDeclarations": true
+  },
+  "C:\\Users\\Dell\\Downloads\\van1\\sepm_project_submission\\contracts\\defi.sol": {
+    "jobHash": "solc-0_8_24-fd8d25ff1378ecb75ec793f4e126ad9321fcf7ad",
+    "isolated": false,
+    "compilerType": "solc",
+    "artifactPaths": [],
+    "buildInfoPath": "C:\\Users\\Dell\\Downloads\\van1\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-1c791cf880713591692d5af4cdc434e0a333b1f1.json",
+    "buildInfoOutputPath": "C:\\Users\\Dell\\Downloads\\van1\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-1c791cf880713591692d5af4cdc434e0a333b1f1.output.json",
+    "typeFilePath": "C:\\Users\\Dell\\Downloads\\van1\\sepm_project_submission\\artifacts\\contracts\\defi.sol\\artifacts.d.ts",
+    "wasm": false,
+    "artifactsDirectory": "C:\\Users\\Dell\\Downloads\\van1\\sepm_project_submission\\artifacts",
+    "emitsTypeDeclarations": true
+  }
+}
