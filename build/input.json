@@ -1,0 +1,25 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/HelloWorld.sol": {
+      "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.20;\n\ncontract HelloWorld {\n    string public greet = \"Hello World!\";\n}\n"
+    },
+    "contracts/vault.sol": {
+      "content": ""
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": false,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object"
+        ]
+      }
+    }
+  }
+}
