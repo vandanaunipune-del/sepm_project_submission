@@ -1,0 +1,21 @@
+{
+  "name": "feature_3022411017_vault_app",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/vandanaunipune-del/sepm_project_submission#readme",
+  "bugs": {
+    "url": "https://github.com/vandanaunipune-del/sepm_project_submission/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vandanaunipune-del/sepm_project_submission.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "docker run --rm -v \"C:\\Users\\anjali\\sepm_project_submission/contracts:/sources\" -v \"C:\\Users\\anjali\\sepm_project_submission/build:/output\" ethereum/solc:0.8.24 --overwrite --combined-json abi,bin -o /output /sources/HelloWorld.sol"
+  }
+}
