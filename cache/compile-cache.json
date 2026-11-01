@@ -28,14 +28,14 @@
     "emitsTypeDeclarations": true
   },
   "C:\\sepm_project_submission\\contracts\\SimpleVault.sol": {
-    "jobHash": "solc-0_8_24-2fdc8b4ca87ea6b8b05cd8eedbbc2ed0c40f0d25",
+    "jobHash": "solc-0_8_24-81ebf765b194d2b2781e934287e078b7218ea3bc",
     "isolated": false,
     "compilerType": "solc",
     "artifactPaths": [
       "C:\\sepm_project_submission\\artifacts\\contracts\\SimpleVault.sol\\SimpleVault.json"
     ],
-    "buildInfoPath": "C:\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-2fdc8b4ca87ea6b8b05cd8eedbbc2ed0c40f0d25.json",
-    "buildInfoOutputPath": "C:\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-2fdc8b4ca87ea6b8b05cd8eedbbc2ed0c40f0d25.output.json",
+    "buildInfoPath": "C:\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-81ebf765b194d2b2781e934287e078b7218ea3bc.json",
+    "buildInfoOutputPath": "C:\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-81ebf765b194d2b2781e934287e078b7218ea3bc.output.json",
     "typeFilePath": "C:\\sepm_project_submission\\artifacts\\contracts\\SimpleVault.sol\\artifacts.d.ts",
     "wasm": false,
     "artifactsDirectory": "C:\\sepm_project_submission\\artifacts",
