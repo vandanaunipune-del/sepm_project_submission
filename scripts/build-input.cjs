@@ -33,7 +33,14 @@ const input = {
     evmVersion: "paris",
     outputSelection: {
       "*": {
-        "*": ["abi", "evm.bytecode.object", "evm.deployedBytecode.object", "metadata"],
+        "*": [
+          "abi",
+          "devdoc",
+          "userdoc",
+          "evm.bytecode.object",
+          "evm.deployedBytecode.object",
+          "metadata",
+        ],
       },
     },
   },

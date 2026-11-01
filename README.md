@@ -12,6 +12,15 @@ SEPM project submission. It contains an ERC-4626 yield vault contract (`YieldVau
 | --- | --- |
 | [contracts/YieldVault.sol](contracts/YieldVault.sol) | ERC-4626 tokenized vault (OpenZeppelin 5.1.0) with an owner-only `harvest`, a performance fee (capped at 20%), a fee recipient and an optional deposit cap. Not audited. |
 | [contracts/HelloWorld.sol](contracts/HelloWorld.sol) | Minimal contract with a public `greet` string. |
+| [contracts/SimpleVault.sol](contracts/SimpleVault.sol) | ETH deposit/withdraw example demonstrating NatSpec `@title`, `@notice`, `@dev`, `@param`, and `@return` documentation. |
+
+The standard-JSON compiler input requests NatSpec `userdoc` and `devdoc` output. After `npm run compile`, view the generated documentation with:
+
+```shell
+node -e "const o=JSON.parse(require('fs').readFileSync('build/output.json','utf8')).contracts['contracts/SimpleVault.sol'].SimpleVault; console.log(JSON.stringify({userdoc:o.userdoc,devdoc:o.devdoc},null,2))"
+```
+
+`userdoc` contains user-facing notices; `devdoc` contains developer notes and parameter/return details. These outputs can also be consumed by block explorers and IDEs.
 
 `YieldVault` constructor arguments, as set in [scripts/deploy.js](scripts/deploy.js):
 
@@ -27,9 +36,13 @@ SEPM project submission. It contains an ERC-4626 yield vault contract (`YieldVau
 
 ```text
 .github/workflows/
-  compile.yml          Compiles contracts on push/PR to main
-  deploy.yml           Compiles and deploys YieldVault to Sepolia (manual trigger)
+  pipeline.yml         Runs compile -> unit tests -> Slither; manual runs can deploy
+  compile.yml          Reusable Solidity compilation job
+  unit-test.yml        Reusable Hardhat unit-test job
+  slither.yml          Reusable Slither analysis job
+  deploy.yml           Reusable YieldVault deployment job
 contracts/             Solidity sources
+test/                  Hardhat unit tests
 scripts/
   build-input.cjs      Builds the solc standard-JSON input (build/input.json)
   deploy.js            Deploys YieldVault with ethers.js using build/output.json
@@ -132,8 +145,9 @@ The secret names must match the ones used in [deploy.yml](.github/workflows/depl
 
 ### Workflows
 
-- **Compile Contracts** ([compile.yml](.github/workflows/compile.yml)) – runs on push and pull request to `main` when files under `contracts/` change, and on manual dispatch. It builds the solc input, compiles in the `ethereum/solc:0.8.24` container, fails on any compiler error, prints bytecode sizes and uploads `build/output.json` as an artifact.
-- **Compile and Deploy to Sepolia** ([deploy.yml](.github/workflows/deploy.yml)) – manual trigger (**Actions → Compile and Deploy to Sepolia → Run workflow**). It compiles the same way, then runs `node scripts/deploy.js` with the secrets above.
+- **Contract CI and Deployment** ([pipeline.yml](.github/workflows/pipeline.yml)) – runs on pushes and pull requests to `main`, in order: compile, Hardhat unit tests, then Slither analysis. A manual run (**Actions → Contract CI and Deployment → Run workflow**) also reaches the deployment job after all checks pass.
+- **Deployment approval** – the deployment job uses the `Testnet` environment. In **Settings → Environments → Testnet**, configure required reviewers to require manual approval before `node scripts/deploy.js` can access the Sepolia secrets and deploy. Without required reviewers configured, GitHub will not pause for approval.
+- **Sample unit test** ([HelloWorld.ts](test/HelloWorld.ts)) – deploys `HelloWorld` to the local Hardhat network and verifies its initial greeting.
 
 ### Pushing to both repositories
 
@@ -146,7 +160,7 @@ git push origin feature_0000_vault_app
 git push myremote feature_0000_vault_app:main
 ```
 
-Check that both workflows succeed in the individual repo's **Actions** tab. Screenshots of the deployment are in [screenshot_github_run.png](screenshot_github_run.png) and [screenshot_local_run.png](screenshot_local_run.png).
+Check that **Contract CI and Deployment** succeeds in the individual repo's **Actions** tab. Approve the `Testnet` environment deployment when prompted. Screenshots of the deployment are in [screenshot_github_run.png](screenshot_github_run.png) and [screenshot_local_run.png](screenshot_local_run.png).
 
 ## Hardhat
 

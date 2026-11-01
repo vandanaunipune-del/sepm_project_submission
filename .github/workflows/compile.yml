@@ -1,19 +1,7 @@
 name: Compile Contracts
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "contracts/**"
-  pull_request:
-    branches: [main]
-    paths:
-      - "contracts/**"
-  workflow_dispatch:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  workflow_call:
 
 jobs:
   compile:
@@ -27,7 +15,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
 
       - name: Install dependencies

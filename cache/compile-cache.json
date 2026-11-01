@@ -26,5 +26,19 @@
     "wasm": false,
     "artifactsDirectory": "C:\\sepm_project_submission\\artifacts",
     "emitsTypeDeclarations": true
+  },
+  "C:\\sepm_project_submission\\contracts\\SimpleVault.sol": {
+    "jobHash": "solc-0_8_24-2fdc8b4ca87ea6b8b05cd8eedbbc2ed0c40f0d25",
+    "isolated": false,
+    "compilerType": "solc",
+    "artifactPaths": [
+      "C:\\sepm_project_submission\\artifacts\\contracts\\SimpleVault.sol\\SimpleVault.json"
+    ],
+    "buildInfoPath": "C:\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-2fdc8b4ca87ea6b8b05cd8eedbbc2ed0c40f0d25.json",
+    "buildInfoOutputPath": "C:\\sepm_project_submission\\artifacts\\build-info\\solc-0_8_24-2fdc8b4ca87ea6b8b05cd8eedbbc2ed0c40f0d25.output.json",
+    "typeFilePath": "C:\\sepm_project_submission\\artifacts\\contracts\\SimpleVault.sol\\artifacts.d.ts",
+    "wasm": false,
+    "artifactsDirectory": "C:\\sepm_project_submission\\artifacts",
+    "emitsTypeDeclarations": true
   }
 }
