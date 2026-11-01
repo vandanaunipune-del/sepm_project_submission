@@ -1,0 +1,56 @@
+name: Contract CI and Deployment
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "contracts/**"
+      - "test/**"
+      - "scripts/build-input.cjs"
+      - "scripts/deploy.js"
+      - "hardhat.config.ts"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/**"
+  pull_request:
+    branches: [main]
+    paths:
+      - "contracts/**"
+      - "test/**"
+      - "scripts/build-input.cjs"
+      - "scripts/deploy.js"
+      - "hardhat.config.ts"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/**"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  compile:
+    name: Compile contracts
+    uses: ./.github/workflows/compile.yml
+
+  unittest:
+    name: Run unit tests
+    needs: compile
+    uses: ./.github/workflows/unit-test.yml
+
+  slither:
+    name: Analyze contracts
+    needs: unittest
+    uses: ./.github/workflows/slither.yml
+
+  deploy:
+    name: Deploy to Sepolia
+    needs: slither
+    if: github.event_name == 'workflow_dispatch'
+    uses: ./.github/workflows/deploy.yml
+    secrets: inherit
