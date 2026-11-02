@@ -1,0 +1,12 @@
+{
+  "name": "vault-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prepare-input": "node scripts/build-input.js",
+    "compile": "npm run prepare-input && docker compose run --rm solc"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "5.1.0"
+  }
+}
