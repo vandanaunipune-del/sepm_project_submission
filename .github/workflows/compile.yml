@@ -1,0 +1,41 @@
+name: Compile Contracts
+on: push
+
+jobs:
+  build:
+    name: Build with solc 0.8.24
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate solc standard-JSON input
+        run: npm run prepare-input
+
+      - name: Compile contracts in Docker
+        run: docker compose run --rm solc
+
+      - name: Fail on compiler errors
+        run: |
+          if grep -q '"severity":"error"' build/output.json; then
+            echo "Compilation failed"
+            exit 1
+          fi
+
+      - name: Print bytecode sizes
+        run: |
+          jq -r '.contracts | to_entries[] | .key as $f | .value | to_entries[] | "\($f):\(.key) \((.value.evm.deployedBytecode.object | length) / 2) bytes"' build/output.json
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build
+          path: build/

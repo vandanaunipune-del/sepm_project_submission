@@ -1,0 +1,6 @@
+Part 1.2 Compile pipeline: https://github.com/rashi-365/SEPMPJ1/actions/runs/43050299212
+Part 2 Sepolia deployment: https://github.com/rashi-365/SEPMPJ1/actions/runs/43050299279
+Individual repository: https://github.com/rashi-365/SEPMPJ1
+Part 1.2 GitHub Actions screenshot: https://github.com/rashi-365/SEPMPJ1/blob/main/screenshot_github_run.png
+Part 1.2 local screenshot: https://github.com/rashi-365/SEPMPJ1/blob/main/screenshot_local.png
+Part 2 deployment evidence: https://github.com/rashi-365/SEPMPJ1/tree/main/screenshots
