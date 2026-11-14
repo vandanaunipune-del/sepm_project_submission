@@ -1,0 +1,5 @@
+Github repo:
+https://github.com/amaanshk-tch/sepm_project_submission.git
+
+Pipline run:
+https://github.com/amaanshk-tch/sepm_project_submission/actions/runs/41509831190

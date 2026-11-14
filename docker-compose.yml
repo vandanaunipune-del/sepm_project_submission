@@ -1,0 +1,18 @@
+services:
+  solc:
+    image: ethereum/solc:0.8.24
+    working_dir: /app
+    volumes:
+      - .:/app
+    entrypoint: ["sh", "-c"]
+    command:
+      - |
+        set -e
+        solc --standard-json --base-path /app --include-path /app/node_modules \
+          < build/input.json > build/output.json
+        if grep -q '"severity":"error"' build/output.json; then
+          echo "Compilation failed:"
+          grep -o '"formattedMessage":"[^"]*"' build/output.json
+          exit 1
+        fi
+        echo "Compilation OK"
